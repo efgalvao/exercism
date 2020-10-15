@@ -14,4 +14,3 @@ class ResistorColorDuo
     end
 end
 
-        
