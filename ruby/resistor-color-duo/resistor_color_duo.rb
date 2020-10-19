@@ -8,9 +8,8 @@ To get started with TDD, see the `README.md` file in your
 
 
 class ResistorColorDuo
-    def value(colores)
-        colors = {"black" => 0, "brown"  => 1, "red"  =>  2, "orange"  => 3, "yellow"  => 4, "green"  => 5, "blue"  => 6, "violet"  => 7, "grey" => 8, "white" => 9}
-        resistance = "#{colors[colores[0]]}#{colors[colores[1]]}".to_i
+    COLORS = {"black" => 0, "brown"  => 1, "red"  =>  2, "orange"  => 3, "yellow"  => 4, "green"  => 5, "blue"  => 6, "violet"  => 7, "grey" => 8, "white" => 9}
+    def value(colors)
+                resistance = "#{ResistorColorDuo::COLORS[colors[0]]}#{ResistorColorDuo::COLORS[colors[1]]}".to_i
     end
 end
-
