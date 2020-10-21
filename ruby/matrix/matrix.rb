@@ -7,34 +7,20 @@ To get started with TDD, see the `README.md` file in your
 =end
 
 class Matrix
-    def initialize(row)
-        @row = row
+    def initialize(source)
+        @source = source
     end
 
     def rows
-        arr = []
-        array = @row.split("\n")
-        array.each do |n|
-             n = n.split()
-             n.map!(&:to_i)
-             arr << n
-         end
-        return arr
+        matrix = @source.split("\n").map do |line|
+            line.strip.split.map(&:to_i)
+          end
     end
     def columns
-        arr = []
-        array = @row.split("\n")
-        array.each do |n|
-             n = n.split()
-             n.map!(&:to_i)
-             arr << n
+        matrix = @source.split("\n").map do |line|
+            line.strip.split.map(&:to_i)
         end
-        column = Array.new(3) {Array.new(3)}
-        (0...(arr.length - 1)).each do |x|
-                arr.each {|n| column[x] << n[x]}
-        end
-        column.each {|z| z.compact!}
-        column.delete_at(-1)
-        column
+        matrix.transpose.each { |line| line.join(',') }
     end
+    
 end
