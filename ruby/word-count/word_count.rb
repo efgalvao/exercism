@@ -6,23 +6,15 @@ To get started with TDD, see the `README.md` file in your
 `ruby/word-count` directory.
 =end
 class Phrase
-    def initialize(phrase)
-        @phrase = phrase
+    def initialize(string)
+      @input = string
     end
+  
+    def words
+      @input.downcase.scan(/\b[\w']+\b/)
+    end
+  
     def word_count
-        h = Hash.new
-        words = @phrase.split(/[ ,\n!&@$%^&:.]/)
-        words.each do |w|
-            w.downcase!
-            if w == ""
-                next
-            end
-        if h.has_key?(w)
-        h[w] = h[w] + 1
-        else
-        h[w] = 1
-        end
-        end
-        h
+      words.each_with_object(Hash.new(0)) { |word, hash| hash[word] += 1 }
     end
-end
+  end
