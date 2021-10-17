@@ -10,7 +10,6 @@ defmodule HighSchoolSweetheart do
   def initials(full_name) do
     names = String.split(full_name, " ", trim: true)
     initials = Enum.map(names, fn name -> String.upcase(initial(name)) end)
-    # initials = initial
     Enum.join(initials, " ")
   end
 
