@@ -7,7 +7,7 @@ defmodule WineCellar do
   def filter(cellar, color, opts \\ [])
   def filter(cellar, _, _) when cellar == [], do: [] 
   def filter(cellar, color, opts) do
-    wines = for {k, v} <- cellar, k == color, do: v  
+    wines = Keyword.get_values(cellar, color) 
     year = Keyword.get(opts, :year)
     country = Keyword.get(opts, :country)
     
